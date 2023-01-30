@@ -35,7 +35,7 @@ namespace AccDisplay {
             
             var perfect = _task.m_PerfectResult;
             var pass = _task.m_JumpOverResult;
-            var note = _task.m_CoolResult;
+            var note = _task.m_MusicCount;
             var heart = _task.m_Blood;
             var great = _task.m_GreatResult;
             var miss = _task.m_MissResult + ExtraMisses;
