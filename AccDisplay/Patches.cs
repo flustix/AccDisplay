@@ -16,6 +16,9 @@ namespace AccDisplay {
             int result = Singleton<BattleEnemyManager>.instance.GetPlayResult(idx);
             MusicData musicDataByIdx = Singleton<StageBattleComponent>.instance.GetMusicDataByIdx(idx);
             
+            // - TODO -
+            // detect when not holding a sheet anymore
+
             if (result == 0)
             {
                 // air ghost miss
@@ -28,18 +31,7 @@ namespace AccDisplay {
                 else if (musicDataByIdx.noteData.type != 2 && !musicDataByIdx.isDouble)
                     AccDisplayMod.ExtraMisses++;
             }
-            if (result == 1)
-            {
-                // ground ghost miss
-                if (musicDataByIdx.noteData.type == 4)
-                    AccDisplayMod.ExtraMisses++;
-                // ground collectable note miss
-                else if (musicDataByIdx.noteData.type == 7)
-                    AccDisplayMod.ExtraMisses++;
-                // normal miss
-                else
-                    AccDisplayMod.ExtraMisses++;
-            }
+            if (result == 1) AccDisplayMod.ExtraMisses++;
         }
     }
 }

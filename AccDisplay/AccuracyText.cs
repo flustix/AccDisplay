@@ -1,40 +1,38 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using MuseDashMirror.UICreate;
 using static MuseDashMirror.BattleComponent;
-using static MuseDashMirror.UICreate;
 
 namespace AccDisplay {
     public class AccuracyText : MonoBehaviour {
         private static GameObject _accuracyText;
+        
+        private readonly Color _pink = new Color(1f, 0.64f, 0.93f, 1f);
+        private readonly Color _pinkDarker = new Color(1f, 0.22f, 0.85f, 1f);
 
         public AccuracyText(IntPtr intPtr) : base(intPtr)
         {
         }
 
         private void Start() {
-            LoadFonts();
+            Fonts.LoadFonts();
         }
 
         private void Update() {
             if (_accuracyText == null && IsInGame) {
-                CreateCanvas("Accuracy Canvas", "Camera_2D");
-                _accuracyText = CreateText("Accuracy", "100%", new Color(1, .49f, .839f), 70);
-                CreateText("Accuracy2", "ACCURACY", new Color(1, .18f, .592f), 60, 70);
+                CanvasCreate.CreateCanvas("Accuracy Canvas", "Camera_2D");
+                _accuracyText = Utils.CreateText("Accuracy", "100%", 0, _pink, true, _pinkDarker);
+                Utils.CreateText("Accuracy2", "ACCURACY", 70, _pinkDarker);
             }
             
             if (_accuracyText == null) return;
             
             _accuracyText.GetComponent<Text>().text = AccDisplayMod.Accuracy.ToString("F2") + "%";
         }
-
-        private GameObject CreateText(string id, string text, Color color, int size, int offset = 0) {
-            return CreateTextGameObject("Accuracy Canvas", id, text, TextAnchor.UpperLeft, true,
-                new Vector3(-400, 280 - offset, 0), new Vector2(960, 216), size, SnapsTasteFont, color);
-        }
         
         public static void Remove() {
-            UnloadFonts();
+            Fonts.UnloadFonts();
             Destroy(_accuracyText);
             _accuracyText = null;
         }

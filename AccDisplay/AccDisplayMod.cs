@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GameCore.HostComponent;
+﻿using System;
+using Assets.Scripts.GameCore.HostComponent;
 using Assets.Scripts.PeroTools.Commons;
 using MelonLoader;
 using UnhollowerRuntimeLib;
@@ -7,6 +8,10 @@ using UnityEngine;
 namespace AccDisplay {
     public class AccDisplayMod : MelonMod {
         public static float Accuracy { get; private set; }
+        
+        /// <summary>
+        /// Misses that aren't tracked by _task.m_MissResult
+        /// </summary>
         public static int ExtraMisses { get; set; }
 
         private TaskStageTarget _task;
@@ -46,7 +51,8 @@ namespace AccDisplay {
                 Accuracy = 100;
             } else {
                 var counted = perfect + pass + note + heart + great * GreatFactor;
-                Accuracy = counted / total * 100;
+                // lerp to smooth out the accuracy
+                Accuracy = Mathf.Lerp(Accuracy, counted / total * 100, 0.1f);
             }
         }
     }
