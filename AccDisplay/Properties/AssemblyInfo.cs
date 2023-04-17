@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using AccDisplay;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(AccDisplayMod), "AccDisplay", "2023.1.0", "Flustix", "https://github.com/Flustix/AccDisplay")]
+[assembly: MelonInfo(typeof(AccDisplayMod), "AccDisplay", "1.1.0", "Flustix", "https://github.com/Flustix/AccDisplay")]
 [assembly: MelonGame("PeroPeroGames", "MuseDash")]
 
 // General Information about an assembly is controlled through the following 
