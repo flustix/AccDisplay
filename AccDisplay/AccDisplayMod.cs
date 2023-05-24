@@ -18,6 +18,24 @@ namespace AccDisplay {
         
         // calculation stuff
         private const float GreatFactor = 0.5f;
+        
+        private static MelonPreferences_Category _category;
+        private static MelonPreferences_Entry<bool> _displayAccText;
+        private static MelonPreferences_Entry<string> _customText;
+        private static MelonPreferences_Entry<bool> _smoothAccuracy;
+        
+        public static bool DisplayAccText => _displayAccText.Value;
+        public static string CustomText => _customText.Value;
+        private static bool SmoothAccuracy => _smoothAccuracy.Value;
+
+        public override void OnApplicationStart() {
+            _category = MelonPreferences.CreateCategory("AccDisplay", "AccDisplay");
+            _displayAccText = _category.CreateEntry("DisplayAccText", true, "Display the \"accuracy\" text");
+            _customText = _category.CreateEntry("CustomText", "ACCURACY", "Replace the \"accuracy\" text with your own");
+            _smoothAccuracy = _category.CreateEntry("SmoothAccuracy", true, "Smooth out the accuracy using lerp");
+            _category.LoadFromFile(false);
+            _category.SaveToFile(false);
+        }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
@@ -51,8 +69,8 @@ namespace AccDisplay {
                 Accuracy = 100;
             } else {
                 var counted = perfect + pass + note + heart + great * GreatFactor;
-                // lerp to smooth out the accuracy
-                Accuracy = Mathf.Lerp(Accuracy, counted / total * 100, 0.1f);
+                var acc = counted / total * 100;
+                Accuracy = SmoothAccuracy ? Mathf.Lerp(Accuracy, acc, 0.1f) : acc;
             }
         }
     }

@@ -3,18 +3,18 @@ using System.Runtime.InteropServices;
 using AccDisplay;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(AccDisplayMod), "AccDisplay", "1.1.0", "Flustix", "https://github.com/Flustix/AccDisplay")]
+[assembly: MelonInfo(typeof(AccDisplayMod), "AccDisplay", "1.2.0", "Flustix", "https://github.com/Flustix/AccDisplay")]
 [assembly: MelonGame("PeroPeroGames", "MuseDash")]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AccDisplay")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A mod for Muse Dash that displays the current accuracy in a vanilla-like way.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AccDisplay")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCopyright("Copyright © Flustix 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -36,5 +36,5 @@ using MelonLoader;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.2.0")]
+[assembly: AssemblyFileVersion("1.2.0")]
