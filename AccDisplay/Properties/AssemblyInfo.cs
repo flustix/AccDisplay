@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using AccDisplay;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(AccDisplayMod), "AccDisplay", "1.2.0", "Flustix", "https://github.com/Flustix/AccDisplay")]
+[assembly: MelonInfo(typeof(AccDisplayMod), "AccDisplay", "1.3.0", "Flustix", "https://github.com/Flustix/AccDisplay")]
 [assembly: MelonGame("PeroPeroGames", "MuseDash")]
 
 // General Information about an assembly is controlled through the following 
@@ -36,5 +36,5 @@ using MelonLoader;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.0")]
-[assembly: AssemblyFileVersion("1.2.0")]
+[assembly: AssemblyVersion("1.3.0")]
+[assembly: AssemblyFileVersion("1.3.0")]
