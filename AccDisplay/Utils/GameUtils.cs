@@ -1,4 +1,5 @@
-﻿using Il2CppAssets.Scripts.GameCore.HostComponent;
+﻿using AccDisplay.Scoring;
+using Il2CppAssets.Scripts.GameCore.HostComponent;
 using Il2CppAssets.Scripts.PeroTools.Commons;
 using Il2CppFormulaBase;
 
@@ -9,6 +10,8 @@ public static class GameUtils {
     private static TaskStageTarget _task;
     
     public static bool Playing => _stage?.isInGame ?? false;
+    
+    public static ScoreInfo Score { get; private set; }
     
     // normal judgements
     public static int PerfectCount => _task?.m_PerfectResult ?? 0;
@@ -25,12 +28,12 @@ public static class GameUtils {
 
     public static float Accuracy {
         get {
-            var total = PerfectCount + JumpOverCount + NoteCount + HeartCount + GreatCount + MissCount;
+            var total = Score.TotalCount;
             
             if (total == 0)
                 return 100;
 
-            var counted = PerfectCount + JumpOverCount + NoteCount + HeartCount + GreatCount * .5f;
+            var counted = Score.TotalPerfectCount + Score.GearDodgeCount + Score.NoteCollectCount + Score.HeartCollectCount + Score.TotalGreatCount * .5f;
             return counted / total * 100;
         }
     }
@@ -48,5 +51,6 @@ public static class GameUtils {
         NormalMissCount = 0;
         GhostMissCount = 0;
         CollectableMissCount = 0;
+        Score = new ScoreInfo();
     }
 }
